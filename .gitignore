@@ -1,0 +1,17 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+
+# Django env variables
+.env
+
+# PyCharm config
+.idea/
+
+
+# Django migrations except init
+**/migrations/
+!**/migrations/__init__.py
