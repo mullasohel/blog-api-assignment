@@ -19,6 +19,7 @@ from django.urls import path, include
 
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
+from rest_framework.authtoken import views
 from drf_yasg import openapi
 
 schema_view = get_schema_view(
@@ -36,5 +37,6 @@ urlpatterns = [
     # path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'), # We can also use redoc like this
     path('admin/', admin.site.urls),
     path('api/', include('blog.urls')),
-    path('api-token-auth/', include('rest_framework.urls')),  # Optional
+    path('api-token-auth/', views.obtain_auth_token),
+    path('api-auth/', include('rest_framework.urls')),
 ]
