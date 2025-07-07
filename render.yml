@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: blog-api-assignment
+    env: docker
+    repo: https://github.com/mullasohel/blog-api-assignment.git
+    branch: main
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: DJANGO_SUPERUSER_USERNAME
+        value: admin
+      - key: DJANGO_SUPERUSER_PASSWORD
+        value: admin@123
+      - key: DJANGO_SUPERUSER_EMAIL
+        value: mullasohelms786@gmail.com
+      - key: DEBUG
+        value: "True"
