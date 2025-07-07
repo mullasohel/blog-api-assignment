@@ -1,17 +1,10 @@
 services:
   - type: web
     name: blog-api-assignment
-    env: docker
-    repo: https://github.com/mullasohel/blog-api-assignment.git
-    branch: main
-    dockerfilePath: ./Dockerfile
+    env: python
+    region: oregon
     plan: free
-    envVars:
-      - key: DJANGO_SUPERUSER_USERNAME
-        value: admin
-      - key: DJANGO_SUPERUSER_PASSWORD
-        value: admin@123
-      - key: DJANGO_SUPERUSER_EMAIL
-        value: mullasohelms786@gmail.com
-      - key: DEBUG
-        value: "True"
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+    startCommand: daphne -b 0.0.0.0 -p 8000 blog_project.asgi:application
