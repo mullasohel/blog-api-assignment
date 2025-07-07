@@ -169,3 +169,9 @@ SWAGGER_SETTINGS = {
     },
     'USE_SESSION_AUTH': False,
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://blog-api-assignment.onrender.com',
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
