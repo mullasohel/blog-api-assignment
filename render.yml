@@ -2,9 +2,10 @@ services:
   - type: web
     name: blog-api-assignment
     env: python
-    region: oregon
-    plan: free
     buildCommand: |
       pip install -r requirements.txt
-      python manage.py collectstatic --noinput
-    startCommand: daphne -b 0.0.0.0 -p 8000 blog_project.asgi:application
+    startCommand: |
+      python manage.py migrate && python manage.py collectstatic --noinput && daphne blog_project.asgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: blog_project.settings
