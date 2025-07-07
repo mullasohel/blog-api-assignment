@@ -18,8 +18,5 @@ COPY . .
 # Expose the port Gunicorn will run on
 EXPOSE 8000
 
-# Collect static files
-RUN python manage.py collectstatic --noinput
-
 # Start the server using Gunicorn
 CMD ["gunicorn", "blog_project.wsgi:application", "--bind", "0.0.0.0:8000"]
